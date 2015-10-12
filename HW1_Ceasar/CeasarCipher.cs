@@ -61,7 +61,7 @@ namespace Ceasar.Tests
             for (var i = 0; i < inputText.Length; i++)
             {
                 int charcode = inputText[i];
-                if (charcode>=127 || charcode<32)
+                if (charcode > MaxCharCode || charcode < MinCharCode)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
