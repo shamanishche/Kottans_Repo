@@ -111,6 +111,24 @@ namespace Matrix.Tests
             return result;
         }
 
+        public static CoolMatrix operator *(int left, CoolMatrix right)
+        {
+            return right*left;
+        }
+
+        public static CoolMatrix operator *(CoolMatrix left, CoolMatrix right)
+        {
+            if (left.Size.Width != right.Size.Height)
+                 { throw new ArgumentOutOfRangeException(); }
+
+            CoolMatrix resultMatrix = new int[left.Size.Height, right.Size.Width];
+            for (var i = 0; i < resultMatrix.Size.Height; i++)
+                for (var j = 0; j < resultMatrix.Size.Width; j++)
+                    for (var k = 0; k < left.Size.Width; k++)
+                        resultMatrix[i, j] = resultMatrix[i, j] + left[i, k] * right[k, j];
+            return resultMatrix;
+        }
+    
         public static CoolMatrix operator +(CoolMatrix left, CoolMatrix right)
         {
             if (left.Size != right.Size)
@@ -129,16 +147,13 @@ namespace Matrix.Tests
 
         public CoolMatrix Transpose()
         {
-            int[,] transposedArray = new int[Size.Height, Size.Width];
+            int[,] transposedArray = new int[Size.Width, Size.Height];
+            var transposedMatrix = new CoolMatrix(transposedArray);
+            for (var i = 0; i < transposedMatrix.Size.Height; i++)
+                for (var j = 0; j < transposedMatrix.Size.Width; j++)
+                    transposedMatrix[i, j] = arr[j, i];
 
-            for (var i = 0; i < Size.Width; i++)
-                for (var j = 0; j < Size.Height; j++)
-                    transposedArray[j, i] = arr[i, j];
-
-            Size = new Size(transposedArray.GetLength(0), transposedArray.GetLength(1));
-            arr = transposedArray;
-
-            return this;
+            return transposedMatrix;
         }
     }
 }
