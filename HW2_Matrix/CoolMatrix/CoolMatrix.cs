@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data;
 
-namespace Matrix.Tests
+namespace CoolMatrixNS
 {
-    internal class CoolMatrix
+    public class CoolMatrix
     {
         private int[,] arr;
         public Size Size;

@@ -1,6 +1,6 @@
-﻿namespace Matrix.Tests
+﻿namespace CoolMatrixNS
 {
-    internal class Size
+    public class Size
     {
         public readonly int Height;
         public readonly int Width;

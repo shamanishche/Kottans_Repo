@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using CoolMatrixNS;
 
 namespace Matrix.Tests
 {
