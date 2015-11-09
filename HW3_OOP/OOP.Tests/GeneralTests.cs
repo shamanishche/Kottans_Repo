@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using NUnit.Framework;
 using OOP.Shapes;
+using OOP.Shapes.Triangles;
 using FluentAssertions;
 
 namespace OOP.Tests
@@ -23,10 +24,10 @@ namespace OOP.Tests
         public void ShapeShouldBeMoved([Values(
             typeof(Circle)
             // TODO: UNCOMMENT WHEN IMPLEMENTED ALL SHAPES
-            //,typeof(Rectangle)
-            //,typeof(Triangle)
-            //,typeof(EquilateralTriangle)
-            //,typeof(RightTriangle)
+            ,typeof(Rectangle)
+            ,typeof(Triangle)
+            ,typeof(EquilateralTriangle)
+            ,typeof(RightTriangle)
             )] Type targetType)
         {
             // declare
@@ -45,15 +46,15 @@ namespace OOP.Tests
         public void AreaShouldBeCalculated([Values(
             typeof(Circle)
             // TODO: UNCOMMENT WHEN IMPLEMENTED ALL SHAPES
-            //,typeof(Rectangle)
-            //,typeof(Triangle)
-            //,typeof(RightTriangle)
+            ,typeof(Rectangle)
+            ,typeof(Triangle)
+            ,typeof(RightTriangle)
             )] Type targetType,
             [Values(Radius * Radius * Math.PI
             // TODO: UNCOMMENT WHEN IMPLEMENTED ALL SHAPES
-            //,Edge1 * Edge2
-            //,6d
-            //,6d
+            ,Edge1 * Edge2
+            ,6d
+            ,6d
             )] double area)
         {
             // declare
@@ -69,17 +70,17 @@ namespace OOP.Tests
         public void PerimeterShouldBeCalculated([Values(
             typeof(Circle)
             // TODO: UNCOMMENT WHEN IMPLEMENTED ALL SHAPES
-            //,typeof(Rectangle)
-            //,typeof(Triangle)
-            //,typeof(EquilateralTriangle)
-            //,typeof(RightTriangle)
+            ,typeof(Rectangle)
+            ,typeof(Triangle)
+            ,typeof(EquilateralTriangle)
+            ,typeof(RightTriangle)
             )] Type targetType,
             [Values(2 * Radius * Math.PI
             // TODO: UNCOMMENT WHEN IMPLEMENTED ALL SHAPES
-            //,2*(Edge1 + Edge2)
-            //,Edge1 + Edge2 + Edge3
-            //,Edge1 * 3
-            //,Edge1 + Edge2 + Hypotenuse
+            ,2*(Edge1 + Edge2)
+            ,Edge1 + Edge2 + Edge3
+            ,Edge1 * 3
+            ,Edge1 + Edge2 + Hypotenuse
             )] double perimeter)
         {
             // declare
@@ -95,17 +96,17 @@ namespace OOP.Tests
         public void PerimeterShouldBeCalculatedWithMultiplier([Values(
             typeof(Circle)
             // TODO: UNCOMMENT WHEN IMPLEMENTED ALL SHAPES
-            //,typeof(Rectangle)
-            //,typeof(Triangle)
-            //,typeof(EquilateralTriangle)
-            //,typeof(RightTriangle)
+            ,typeof(Rectangle)
+            ,typeof(Triangle)
+            ,typeof(EquilateralTriangle)
+            ,typeof(RightTriangle)
             )] Type targetType,
             [Values(2 * Radius * Math.PI * Multiplier
             // TODO: UNCOMMENT WHEN IMPLEMENTED ALL SHAPES
-            //,2*(Edge1 + Edge2) * Multiplier
-            //,(Edge1 + Edge2 + Edge3) * Multiplier
-            //,(Edge1) * 3 * Multiplier
-            //,(Edge1 + Edge2 + Hypotenuse)* Multiplier
+            ,2*(Edge1 + Edge2) * Multiplier
+            ,(Edge1 + Edge2 + Edge3) * Multiplier
+            ,(Edge1) * 3 * Multiplier
+            ,(Edge1 + Edge2 + Hypotenuse)* Multiplier
             )] double perimeter)
         {
             // declare
@@ -122,17 +123,17 @@ namespace OOP.Tests
         public void ShouldReturnValidShapeName([Values(
             typeof(Circle)
             // TODO: UNCOMMENT WHEN IMPLEMENTED ALL SHAPES
-            //,typeof(Rectangle)
-            //,typeof(Triangle)
-            //,typeof(EquilateralTriangle)
-            //,typeof(RightTriangle)
+            ,typeof(Rectangle)
+            ,typeof(Triangle)
+            ,typeof(EquilateralTriangle)
+            ,typeof(RightTriangle)
             )] Type targetType,
             [Values("Circle"
             // TODO: UNCOMMENT WHEN IMPLEMENTED ALL SHAPES
-            //, "Rectangle"
-            //,"Triangle"
-            //,"EquilateralTriangle"
-            //,"RightTriangle"
+            , "Rectangle"
+            ,"Triangle"
+            ,"EquilateralTriangle"
+            ,"RightTriangle"
             )] string shapeName)
         {
             // declare
@@ -145,22 +146,22 @@ namespace OOP.Tests
         }
 
         private IShape GetShape(Type shapeActualType, IDictionary<ParamKeys, object> @params)
-	    {
-	        var instance = Activator.CreateInstance(shapeActualType, @params);
-            return  instance as IShape;
-	    }
+        {
+            var instance = Activator.CreateInstance(shapeActualType, @params);
+            return instance as IShape;
+        }
 
-	    private IDictionary<ParamKeys, object> GetParams()
-	    {
-	        return new Dictionary<ParamKeys, object>
-	        {
-	            [ParamKeys.CoordX] = CoordX,
-	            [ParamKeys.CoordY] = CoordY,
-	            [ParamKeys.Edge1] = Edge1,
-	            [ParamKeys.Edge2] = Edge2,
-	            [ParamKeys.Edge3] = Edge3,
-	            [ParamKeys.Radius] = Radius,
-	        };
-	    }
+        private IDictionary<ParamKeys, object> GetParams()
+        {
+            return new Dictionary<ParamKeys, object>
+            {
+                [ParamKeys.CoordX] = CoordX,
+                [ParamKeys.CoordY] = CoordY,
+                [ParamKeys.Edge1] = Edge1,
+                [ParamKeys.Edge2] = Edge2,
+                [ParamKeys.Edge3] = Edge3,
+                [ParamKeys.Radius] = Radius,
+            };
+        }
     }
 }

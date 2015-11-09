@@ -6,7 +6,7 @@ using FluentAssertions;
 
 namespace OOP.Tests
 {
-	[TestFixture]
+    [TestFixture]
     public class CircleTests
     {
         [Test]
@@ -20,7 +20,7 @@ namespace OOP.Tests
             var info = circle.ToString();
             // assert
             info.Should().Be(
-                $"Shape information: Name : {"Circle"}, X : {0}, Y : {0}, Perimeter : {2*radius*Math.PI}, Square : {radius*radius*Math.PI}");
+                $"Shape information: Name : {"Circle"}, X : {0}, Y : {0}, Perimeter : {2 * radius * Math.PI}, Square : {radius * radius * Math.PI}");
         }
 
         [Test]
@@ -34,7 +34,6 @@ namespace OOP.Tests
             {
                 Multiplier = multiplier
             };
-
             // act 
             var info = circle.ToString();
             // assert
